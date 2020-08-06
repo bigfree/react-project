@@ -14,9 +14,9 @@ const CREATE_USER = gql`
 
 const Form = () => {
 
-    const [createUser, { data }] = useMutation(CREATE_USER, {
-        update(cache, {data: {createUser} }) {
-            const { users } = cache.readQuery({query: USERS});
+    const [createUser, {data}] = useMutation(CREATE_USER, {
+        update(cache, {data: {createUser}}) {
+            const {users} = cache.readQuery({query: USERS});
             cache.writeQuery({
                 query: USERS,
                 data: {users: users.concat([createUser])},

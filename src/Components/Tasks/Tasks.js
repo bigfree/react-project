@@ -1,15 +1,26 @@
 import React from 'react';
 import {Route} from "react-router-dom";
 
-import styles from "./Task.module.scss"
-
 import TasksFeed from "./TasksFeed";
 import TaskDetail from "./TaskDetail";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        alignItems: 'flex-start'
+    },
+    tasks: {
+        flex: 'auto'
+    }
+}));
 
 const Tasks = ({ match }) => {
+    const css = useStyles();
+
     return (
-        <div className={styles.taskWrapper}>
-            <div className={styles.tasks}>
+        <div className={css.root}>
+            <div className={css.tasks}>
                 <TasksFeed match={match} />
             </div>
             <Route
